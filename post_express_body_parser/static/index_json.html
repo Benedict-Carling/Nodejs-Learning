@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>HTML Forms</h2>
+
+<form action="/" method="POST" id=form>
+    <label for="email">Email Adress:</label><br>
+    <input type="email" name="email" value="bencarling1@gmail.com"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Carling"><br><br>
+    <input type="submit" value="Submit">
+</form> 
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(()=>{
+        $('#form').submit((e)=>{
+            e.preventDefault();
+            $.ajax({
+                url:'/json',
+                type:'post',
+                contentType:'application/json',
+                data:JSON.stringify($('#form').serializeArray()),
+                success: (response)=>{
+                    console.log('got response')
+                    console.log(response)
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>
