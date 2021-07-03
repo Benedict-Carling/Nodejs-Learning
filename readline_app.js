@@ -22,6 +22,7 @@ rl.question(`what is ${num1} + ${num2} ?\n`,
             else{
                 rl.setPrompt(`Your answer of ${userInput} is incorrect, try again\n`);
                 rl.prompt();
+                rl.prompt();
             }
         })
     }
